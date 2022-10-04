@@ -1,0 +1,275 @@
+body {
+	background-color: whitesmoke;
+}
+
+#content {
+	position: relative;
+	padding: 32px 5%;
+	font-family: 'Ubuntu Mono', monospace;
+}
+
+form {
+	--err-color: rgb(243, 172, 172);
+	text-align: center;
+}
+
+#signup {
+	margin-bottom: 16px;
+}
+
+#signup span:nth-of-type(1) {
+	font-size: 30px;
+	font-weight: bolder;
+}
+
+#signup span:nth-of-type(2) {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: block;
+	width: 100%;
+	padding: 8px;
+	color: white;
+	background-color: black;
+	opacity: 0.7;
+}
+
+#agreement {
+	font-size: 14px;
+}
+
+#agreement {
+	margin-bottom: 16px;
+}
+
+.container-input {
+	margin-bottom: 12px;
+}
+
+input {
+	height: 30px;
+	padding: 0px 6px;
+	font-size: 15.5px;
+}
+
+input:not(input[type=submit]) {
+	width: 100%;
+	border: 1px solid grey;
+	background-color: white
+}
+
+input:not(input[type=submit]).failed {
+	border-width: 2px;
+	border-color: var(--err-color);
+}
+
+input[type=submit] {
+	height: unset;
+	border: unset;
+	border-radius: 4px;
+	padding: 8px 10px;
+	font-size: 17px;
+	color: white;
+	background-color: skyblue;
+	cursor: pointer;
+}
+
+input:not(input[type=submit]):focus {
+	outline: unset;
+	border-width: 2px;
+	border-color: skyblue;
+}
+
+input[type=submit]:hover {
+	background-color: deepskyblue;
+}
+
+.error {
+	display: block;
+	padding: 4px 6px;
+	font-size: 14px;
+	text-align: start;
+	color: darkred;
+	background-color: var(--err-color);
+}
+
+.triangle {
+	display: none;
+}
+
+@media only screen and (min-width: 680px) {
+	body {
+		background-color: initial;
+	}
+
+	#content {
+		position: initial;
+		display: flex;
+		height: 100vh;
+		min-height: 500px;
+		width: 100%;
+		padding: 52px 5%;
+		align-items: center;
+		justify-content: center;
+		background-color: whitesmoke;
+	}
+
+	form {
+		width: 620px;
+		border-radius: 14px;
+		padding: 52px 26px;
+		text-align: unset;
+		background-color: white;
+		box-shadow: 1.5px 1.5px 8px grey;
+	}
+
+	form span {
+		display: block;
+	}
+
+	#signup {
+		border-bottom: 1px solid grey;
+		margin-bottom: unset;
+	}
+	
+	#signup span {
+		padding-bottom: 6px;
+	}
+
+	#signup span:nth-of-type(1) {
+		font-size: 30px;
+	}
+
+	#signup span:nth-of-type(2) {
+		position: initial;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-top: 0px;
+		color: initial;
+		background-color: unset;
+		opacity: unset;
+	}
+
+	#name {
+		display: grid;
+		column-gap: 10px;
+		margin-top: 14px;
+	}
+
+	#first_name {
+		grid-column: 1 / 1;
+	}
+	
+	#last_name {
+		grid-column: 2 / 2;
+	}
+
+	.container-input {
+		margin-bottom: 16px;
+	}
+
+	input {
+		height: 32px;
+		width: unset;
+		border-radius: 5px;
+	}
+
+	input:not(input[type=text]) {
+		display: block;
+		width: 100%;
+	}
+
+	input:not(input[type=text]).failed {
+		border-radius: unset;
+	}
+
+	input:not(input[type=submit]) {
+		background-color: whitesmoke;
+		opacity: 0.5;
+	}
+
+	input[type=submit] {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	
+	input:not(input[type=submit]):focus {
+		opacity: unset;
+	}
+
+	#first_name, #last_name {
+		position: relative;
+	}
+
+	#first_name .error, #last_name .error {
+		--height: 36px;
+		z-index: 100;
+		position: absolute;
+		top: 145%;
+		left: 4%;
+		display: flex;
+		width: 185px;
+		height: var(--height);
+		border-radius: 5px;
+		padding: unset;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.triangle {
+		--length: 10px;
+		position: absolute;
+		display: block;
+		width: 0px;
+		height: 0px;
+		border-right: var(--length) solid transparent;
+		border-left: var(--length) solid transparent;
+	}
+
+	#first_name .triangle, #last_name .triangle {
+		bottom: 100%;
+		left: 15%;
+		border-bottom: 10px solid var(--err-color);
+	}	
+}
+
+@media only screen and (min-width: 1020px) {
+	#first_name .error, #last_name .error {
+		top: calc(50% - var(--height) / 2);
+	}
+
+	#first_name .error {
+		left: unset;
+		right: 105%;
+	}
+
+	#last_name .error {
+		left: 105%;
+	}
+
+	.triangle {
+		border-top: var(--length) solid transparent;
+		border-bottom: var(--length) solid transparent;
+	}
+
+	#first_name .triangle {
+		left: 100%;
+		border-left: var(--length) solid var(--err-color);
+	}
+
+	#last_name .triangle {
+		left: unset;
+		right: 100%;
+		border-right: var(--length) solid var(--err-color);
+	}
+
+	#first_name .triangle, #last_name .triangle {
+		bottom: unset;
+		border-bottom-color: transparent;
+	}
+	
+}
+
+.hidden {
+	display: none !important;
+}
